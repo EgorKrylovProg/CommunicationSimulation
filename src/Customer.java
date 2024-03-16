@@ -45,7 +45,7 @@ public class Customer {
         return idBestCustomer;
     }
 
-    Customer(int id, String name, int age, Operator operator, double limitingAmount) {
+    public Customer(int id, String name, int age, Operator operator, double limitingAmount) {
         setAge(age);
         this.id = id;
         this.name = name;
@@ -143,7 +143,7 @@ public class Customer {
     private void setAge(int age) {
 
         if (age < 1 || age > 150) {
-            throw new IllegalArgumentException("Некорректный возраст!");
+            throw new IllegalArgumentException("Invalid age!");
         } else {
             this.age = age;
         }
@@ -159,7 +159,7 @@ public class Customer {
 
     public void setOperator(Operator operator) {
         if (operator.getId() == this.operator.getId()) {
-            System.out.println("Этот клиент уже пользуется этим оператором!");
+            System.out.println("This client is already using this operator!");
             return;
         }
         this.operator = operator;
@@ -169,6 +169,7 @@ public class Customer {
         return bill;
     }
 
+    @Override
     public String toString() {
         return String.format("Customer %d: %.1f %.1f", id, bill.getTotalMoneySpent(), bill.getCurrentDebt());
     }

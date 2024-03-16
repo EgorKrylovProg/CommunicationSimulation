@@ -4,7 +4,7 @@ public class Bill {
     private double totalMoneySpent = 0;
 
     Bill(double limitingAmount) {
-        this.limitingAmount = limitingAmount;
+        setLimitingAmount(limitingAmount);
     }
 
     boolean check(double amount) {
@@ -50,5 +50,13 @@ public class Bill {
 
     public double getTotalMoneySpent() {
         return totalMoneySpent;
+    }
+
+    private void setLimitingAmount(double limitingAmount) {
+
+        if (limitingAmount < 0) {
+            throw new IllegalArgumentException("Limit Bill cannot be negative!");
+        }
+        this.limitingAmount = limitingAmount;
     }
 }
